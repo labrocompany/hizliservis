@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { buttonPrimary, WaLink } from "@/components/whatsapp-link";
-import { phoneDisplay, requestMessage } from "@/lib/site";
+import { phoneDisplay, requestMessage, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "İletişim",
-  description:
-    "HızlıServis servis kaydı WhatsApp üzerinden alınır. Cihaz, marka, arıza ve adres yazmanız yeterlidir.",
+  description: `${site.name} servis kaydı WhatsApp üzerinden alınır. Cihaz, marka, arıza ve adres yazmanız yeterlidir.`,
 };
 
 export default function ContactPage() {

@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { CtaBand } from "@/components/cta-band";
-import { principles, steps } from "@/lib/site";
+import { principles, site, steps } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Hakkımızda",
-  description:
-    "HızlıServis, beyaz eşya, klima ve kombi arızalarında yerinde teknik servis verir. Servis kaydı WhatsApp üzerinden alınır.",
+  description: `${site.name}, beyaz eşya, klima ve kombi arızalarında yerinde teknik servis verir. Servis kaydı WhatsApp üzerinden alınır.`,
 };
 
 export default function AboutPage() {
@@ -20,7 +19,7 @@ export default function AboutPage() {
               Yerinde bakan, işlemi önceden yazan servis
             </h1>
             <p className="mt-5 text-base leading-7 text-muted">
-              HızlıServis, beyaz eşya, klima ve kombi arızalarında adrese gelen
+              {site.name}, beyaz eşya, klima ve kombi arızalarında adrese gelen
               özel teknik servistir. Kayıt yalnızca WhatsApp üzerinden alınır.
               Cihaz türü, marka, arıza ve ilçe yazmanız randevu için yeterlidir.
             </p>

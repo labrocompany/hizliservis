@@ -1,5 +1,5 @@
 export const site = {
-  name: "HızlıServis",
+  name: "Arıza Servis",
   whatsappNumber: "905011059846",
   phoneDisplay: "+90 501 105 98 46",
 };

@@ -32,9 +32,9 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
         <Link href="/" className="flex items-center gap-2.5">
           <span className="grid h-9 w-9 place-items-center bg-navy text-xs font-semibold tracking-wide text-white">
-            HS
+            AS
           </span>
-          <span className="text-lg font-semibold tracking-tight text-navy">
+          <span className="whitespace-nowrap text-lg font-semibold tracking-tight text-navy">
             {site.name}
           </span>
         </Link>
