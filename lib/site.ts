@@ -1,7 +1,7 @@
 export const site = {
   name: "HızlıServis",
-  whatsappNumber: "66820215990",
-  phoneDisplay: "+66 82 021 5990",
+  whatsappNumber: "905011059846",
+  phoneDisplay: "+90 501 105 98 46",
 };
 
 export const phoneDisplay = site.phoneDisplay;
