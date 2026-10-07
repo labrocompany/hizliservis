@@ -1,69 +1,140 @@
 import Image from "next/image";
+import Link from "next/link";
+import { CtaBand } from "@/components/cta-band";
+import { ServiceCard } from "@/components/service-card";
+import { buttonPrimary, buttonSecondary, WaLink } from "@/components/whatsapp-link";
+import { principles, requestMessage, services, steps } from "@/lib/site";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      <section className="border-b border-line bg-white">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
+          <div>
+            <p className="text-sm font-semibold text-accent">
+              Beyaz eşya teknik servisi
+            </p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-navy sm:text-5xl sm:leading-tight">
+              En yakın servis ekibi, bir WhatsApp mesajı kadar yakın
+            </h1>
+            <p className="mt-5 max-w-xl text-lg leading-8 text-muted">
+              Bulaşık makinesi, çamaşır makinesi, buzdolabı, fırın, klima ve
+              kombi arızalarında yerinde bakıyoruz. Kaydı WhatsApp&apos;tan
+              oluşturun, uygun teknisyen adresinize gelsin.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <WaLink message={requestMessage} className={`inline-flex ${buttonPrimary}`}>
+                Servis talebi oluştur
+              </WaLink>
+              <Link href="/hizmetler" className={`inline-flex ${buttonSecondary}`}>
+                Hizmetleri incele
+              </Link>
+            </div>
+            <p className="mt-6 text-sm text-muted">
+              İşlem öncesi fiyat bilgisi. Onayınız olmadan parça değişimi yok.
+            </p>
+          </div>
+          <div className="relative aspect-video overflow-hidden border border-line bg-line">
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              src="/images/hizliservis-hero.jpg"
+              alt="Teknisyen mutfakta bulaşık makinesine bakıyor"
+              fill
+              priority
+              className="object-cover"
+              sizes="(min-width: 1024px) 560px, 100vw"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="border-b border-line bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-6">
+          <p className="text-sm font-semibold text-navy">Hizmet verilen cihazlar</p>
+          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/hizmetler/${service.slug}`}
+                  className="text-sm text-muted hover:text-navy"
+                >
+                  {service.menu}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <h2 className="text-3xl font-semibold tracking-tight text-navy">
+              Hangi cihazınızı tamir edelim?
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+              Tüm marka ve modellerde yerinde servis. Arçelik, Beko, Bosch,
+              Siemens, Samsung, LG, Vestel, Profilo ve diğer markalar.
+            </p>
+          </div>
+          <Link href="/hizmetler" className="text-sm font-semibold text-navy hover:text-accent">
+            Tüm hizmetler
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <ServiceCard key={service.slug} service={service} />
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-16">
+          <h2 className="text-3xl font-semibold tracking-tight text-navy">
+            Nasıl çalışır?
+          </h2>
+          <ol className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step) => (
+              <li key={step.n} className="border-t border-navy pt-4">
+                <p className="text-sm font-semibold text-accent">{step.n}</p>
+                <h3 className="mt-2 text-lg font-semibold text-navy">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 lg:grid-cols-2">
+        <div className="relative aspect-[4/3] overflow-hidden border border-line bg-line">
+          <Image
+            src="/images/hizliservis-gorusme.jpg"
+            alt="Teknisyen ev sahibiyle buzdolabının yanında konuşuyor"
+            fill
+            className="object-cover"
+            sizes="(min-width: 1024px) 560px, 100vw"
+          />
+        </div>
+        <div>
+          <h2 className="text-3xl font-semibold tracking-tight text-navy">
+            İşlem başlamadan ne yapılacağı belli olur
+          </h2>
+          <p className="mt-4 text-sm leading-7 text-muted">
+            Teknisyen cihazı yerinde inceler, arızayı ve tutarı size yazar.
+            Parça değişecekse önce onayınız alınır. İş bitince işçilik
+            garantisi düzenlenir.
+          </p>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2">
+            {principles.map((item) => (
+              <li key={item.title}>
+                <h3 className="text-sm font-semibold text-navy">{item.title}</h3>
+                <p className="mt-1 text-sm leading-6 text-muted">{item.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <CtaBand />
+    </>
   );
 }
